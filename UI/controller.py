@@ -9,12 +9,19 @@ class Controller:
         self._model = model
 
     def handleCreaGrafo(self,e):
-        pass
-
+        #dobbiamo inizializzare il grafo
+        self._model.buildGraph()
+        self._view.lst_result.controls.clear()#puliamo la finestra dove di solito si stampa
+        self._view.lst_result.controls.append(ft.Text("grafo correttamente creato."))
+        self._view.lst_result.controls.append(ft.Text(f"il grafo è costituito da nodi : {self._model.get_numnodi()} nodi"))
+        self._view.lst_result.controls.append(ft.Text(f"il grafo è costituito da nodi : {self._model.get_numarchi()} nodi"))
+        self._view.update_page()
     def handleCercaRaggiungibili(self,e):
         pass
 
     def loadFermate(self, dd: ft.Dropdown()):
+        #creeo degli oggetti di tipo fermata che vado ad inserire nelle voci
+        #del drop down
         fermate = self._model.fermate
 
         if dd.label == "Stazione di Partenza":
